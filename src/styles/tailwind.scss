@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+}
+.footer p{
+    color: #3c3f44;
+}

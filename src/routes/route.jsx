@@ -13,6 +13,21 @@ export const route = [{
         {
             path: 'about',
             element: <AboutPage />
+        },
+        {
+            path: 'movie',
+        },
+        {
+            path: 'personne'
+        },
+        {
+            path: 'users'
+        },
+        {
+            path: 'awards'
+        },
+        {
+            path: ''
         }
     ]        
 },
