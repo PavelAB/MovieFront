@@ -13,7 +13,7 @@ const SearchBar = ({ label, onSearch }) => {
         onSearch(query)
         setQuery('')
     }, [query])
-
+    //FIXME Pensez à ajouter les classes dans un fichier à part et à ajouter un paramètre pour gérer la taille de ma barre. 
     return (
         <form onSubmit={handleSearchSubmit}>
             {label && (

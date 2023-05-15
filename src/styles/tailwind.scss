@@ -4,18 +4,8 @@
 
 
 
-.footer{
-    position: absolute;
-    bottom: 0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    text-align: center;
-}
-.footer p{
-    color: #3c3f44;
-}
 .header {
-    @apply font-sans py-4 px-6 bg-white shadow w-full;
+    @apply font-sans py-4 px-6 bg-white shadow w-full ;
   }
   
   .header .main-container {
@@ -38,9 +28,7 @@
 }
 
 
-
-.movie{
-  @apply relative mb-4 flex w-full flex-wrap items-stretch
+.maintest {
+  @apply h-4/6 
 }
-
 

@@ -6,12 +6,17 @@ import Header from './containers/header/header'
 
 function App() {
     return(
-        <>
+        <div className='min-h-screen flex flex-col justify-between'>
             <Header/>
+            <main >
             <Outlet/>
+
+            </main>
+
+          
             <Footer/>
 
-        </>
+        </div>
     )
 }
 
