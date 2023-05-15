@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.header {
+    @apply font-sans py-4 px-6 bg-white shadow w-full ;
+  }
+  
+  .header .main-container {
+    @apply flex flex-col sm:flex-row items-baseline w-full;
+  }
+  
+  .header .links-container ul {
+    @apply flex flex-col sm:flex-row space-x-0 sm:space-x-4;
+  }
+  
+  .header .form-container {
+    @apply ml-auto;
+  }
+  
+  .header li {
+    @apply mb-2 sm:mb-0;
+  }
+.test{
+    @apply text-2xl no-underline text-gray-900 hover:text-gray-400
+}
+
+
+.maintest {
+  @apply h-4/6 
+}
+
