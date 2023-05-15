@@ -36,3 +36,11 @@
 .test{
     @apply text-2xl no-underline text-gray-900 hover:text-gray-400
 }
+
+
+
+.movie{
+  @apply relative mb-4 flex w-full flex-wrap items-stretch
+}
+
+

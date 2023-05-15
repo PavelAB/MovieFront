@@ -2,6 +2,7 @@ import App from "../App";
 import AboutPage from "../pages/about/about.page";
 import HomePage from "../pages/home/home.page";
 import MoviePage from "../pages/movies/movie.page";
+import MovieListPage from "../pages/movies/pages/movie-list.page";
 
 export const route = [{
     path: '',
@@ -17,7 +18,13 @@ export const route = [{
         },
         {
             path: 'movie',
-            element: <MoviePage />
+            element: <MoviePage />,
+            children : [
+                {
+                    index: true,
+                    element: <MovieListPage />
+                }
+            ]
         },
         {
             path: 'personne'

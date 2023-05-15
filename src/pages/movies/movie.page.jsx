@@ -1,32 +1,22 @@
 import { useSelector } from "react-redux"
+import { Outlet } from "react-router-dom"
+import SearchBar from "../../components/search-bar/search-bar"
+import { useCallback } from "react"
 
 const MoviePage = () => {
 
-    const { loading, result, error } = useSelector( state => state.movie )
-
-    if(!result){
-        return(
-            <div>
-                <p>Pas de resultat</p>
-            </div>
-        )
-    }
+    const handleMovieSearch = useCallback( (test) => {
+        console.log(test);
+    })
 
 
-    return (
+    return(
         <>
-            <h2>MoviePage</h2>
-            <div>
-                <ul>
-                    { result.data.values.map( (test) => (
-                        <li>{ test.title }</li>
-                    ))
-
-                    }
-                </ul>
+            <div >
+                <SearchBar label='Votre text' onSearch={handleMovieSearch}></SearchBar>
             </div>
+            <Outlet />
         </>
-
     )
 } 
 export default MoviePage
