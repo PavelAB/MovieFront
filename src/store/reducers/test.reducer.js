@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit"
 import { testActionCreate } from "../actions/test.action"
 
 const initialState = {
-    searchResult: null
+    searchResult: ""
 }
 
 const testReducer = createReducer(initialState, (builder) => {
