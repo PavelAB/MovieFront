@@ -1,6 +1,7 @@
 import App from "../App";
 import AboutPage from "../pages/about/about.page";
 import HomePage from "../pages/home/home.page";
+import MoviePage from "../pages/movies/movie.page";
 
 export const route = [{
     path: '',
@@ -16,6 +17,7 @@ export const route = [{
         },
         {
             path: 'movie',
+            element: <MoviePage />
         },
         {
             path: 'personne'
