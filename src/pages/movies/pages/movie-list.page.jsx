@@ -12,7 +12,10 @@ const MovieBody = ({ID_Movie, title, Actors, Writers, Director, Ratings, Comment
         onClick={() => onDetail(ID_Movie)}>
         <h2 className="font-mono font-bold text-lg">{title}</h2>
         <p className="text-xs">Director : {Director}</p>
-        <span>{ Comments ? "Comments : " + Comments.length : 0}</span>
+        <p className=" flex felx-row justify-start ">
+            <span className="mr-3">{ Comments ? "Comments : " + Comments.length : 0 }</span>
+            <span>Rate : { ( Ratings && Ratings.length > 0 ) ? Ratings.reduce(( acc, currVal ) => acc + currVal.rate_picture, 0 )/Ratings.length : 'N/A'}</span>
+        </p>
     </a>
 )
 

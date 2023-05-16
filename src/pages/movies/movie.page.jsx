@@ -23,7 +23,11 @@ const MoviePage = () => {
             <div >
                 <SearchBar label='Votre text' onSearch={handleMovieSearch}></SearchBar>
             </div>
-            <Outlet />
+            
+            <div className="flex">
+                <Outlet />
+            </div>
+            
         </>
     )
 } 
