@@ -25,11 +25,11 @@ export const route = [{
                     index: true,
                     element: <MovieListPage />
                 },
-                {
-                    path: ':detailsId',
-                    element: <MovieDetailsPage />
-                }
             ]
+        },
+        {
+            path: 'movie/:detailsId',
+            element: <MovieDetailsPage />
         },
         {
             path: 'personne'
