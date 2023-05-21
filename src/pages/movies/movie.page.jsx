@@ -4,17 +4,31 @@ import SearchBar from "../../components/search-bar/search-bar"
 import { useCallback } from "react"
 import { useNavigate } from "react-router-dom"
 import { testActionCreate } from "../../store/actions/test.action"
+import { useEffect } from "react"
+import { movieActionFetch } from "../../store/actions/movie.action"
+import { useState } from "react"
 
 const MoviePage = () => {
 
-    const navigate = useNavigate() 
-    const dispath = useDispatch()
+    const dispatch = useDispatch()
+    const [ isOk, setIsOk ] = useState(false)
 
+    useEffect(() => {
+        console.log("OnMounted");
+        const fetchData = async () => {
+            dispatch(movieActionFetch())
+        }
+        fetchData()
+            .then(setIsOk(true))
+            .catch(console.error)
+    },[])
+
+    console.log(isOk);
 
     const handleMovieSearch = useCallback( (test) => {
         console.log(test);
         //navigate('/movie/1')
-        dispath(testActionCreate(test))
+        dispatch(testActionCreate(test))
     })
 
 
@@ -25,7 +39,7 @@ const MoviePage = () => {
             </div>
             
             <div className="flex">
-                <Outlet />
+                 <Outlet />
             </div>
             
         </>

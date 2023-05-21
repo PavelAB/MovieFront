@@ -40,7 +40,7 @@ const Header = () => {
                 <div className="form-container">
                     <form action="">
                         <input type="text" placeholder="Tapez pour rechercher le film." />
-                        <button type="submit">Recherche</button>
+                        <button type="submit" className="customButtons">Recherche</button>
                     </form>
                 </div>
             </div>

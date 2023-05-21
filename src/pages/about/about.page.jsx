@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { movieActionFetch } from "../../store/actions/movie.action"
-import fetchMovie from "../../api/movie.api"
+import { fetchMovie } from "../../api/movie.api"
 
 const AboutPage = () => {
 

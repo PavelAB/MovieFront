@@ -1,5 +1,6 @@
 import App from "../App";
 import AboutPage from "../pages/about/about.page";
+import NotFoundPage from "../pages/errors/not-found/not-found.page";
 import HomePage from "../pages/home/home.page";
 import MoviePage from "../pages/movies/movie.page";
 import MovieDetailsPage from "../pages/movies/pages/movie-details.page";
@@ -41,7 +42,8 @@ export const route = [{
             path: 'awards'
         },
         {
-            path: ''
+            path: '*',
+            element: <NotFoundPage />
         }
     ]        
 },
