@@ -13,13 +13,15 @@ export const fetchMovie = async (  ) => {
         })
 }
 
-export const newComment = ({body, ID_Movie}) => {
+export const newComment = ({body, ID_Movie, ID_User}) => {
     return axios
         .post(MOVIE_URL + '/comments',{
             body : body,
             like_comment : 0,
             dislike_comment : 0,
-            Movies : ID_Movie
+            Movies : ID_Movie,
+            Users: ID_User
+
     })
         .then(console.log("OK"))
         .catch(console.log("NotOK"))

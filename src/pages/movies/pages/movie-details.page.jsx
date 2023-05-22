@@ -47,12 +47,14 @@ const MovieDetailsPage = () => {
         })();
     }, [id]);
 
+
+    //FIXME Remplacer le User_Id par login dans l'entête de commentaire 
     const onSubmit = async( data ) => {
-        Object.assign(data, {ID_Movie : 1})
+        Object.assign(data, {ID_Movie : id, ID_User : localStorage.getItem('ID_User')})
         console.log( data );
         await newComment(data)
         
-        await dispatch(movieActionFetch())
+        //await dispatch(movieActionFetch())
 
         const myMovie = await movie(id);
         setThatMovie(myMovie)
@@ -62,7 +64,6 @@ const MovieDetailsPage = () => {
     if(thatMovie){
         console.log(thatMovie);
     }
-    //console.log("http://localhost:8080" + thatMovie.cover);
 
     if (!thatMovie) {
         return (

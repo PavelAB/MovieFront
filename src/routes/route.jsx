@@ -1,5 +1,7 @@
 import App from "../App";
 import AboutPage from "../pages/about/about.page";
+import LoginPage from "../pages/auth/login.page";
+import RegistrationPage from "../pages/auth/registration.page";
 import NotFoundPage from "../pages/errors/not-found/not-found.page";
 import HomePage from "../pages/home/home.page";
 import MoviePage from "../pages/movies/movie.page";
@@ -31,6 +33,14 @@ export const route = [{
         {
             path: 'movie/:detailsId',
             element: <MovieDetailsPage />
+        },
+        {
+            path: 'login',
+            element: <LoginPage />
+        },
+        {
+            path: 'registration',
+            element: <RegistrationPage />
         },
         {
             path: 'personne'
