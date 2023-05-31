@@ -19,6 +19,10 @@
   .header .form-container {
     @apply ml-auto;
   }
+
+  .coucou {
+    @apply ml-auto;
+  }
   
   .header li {
     @apply mb-2 sm:mb-0;
@@ -30,5 +34,13 @@
 
 .maintest {
   @apply h-4/6 
+}
+
+.customButtons {
+  @apply bg-white ml-1 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow
+}
+
+.ButtonsForm {
+  @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow
 }
 
