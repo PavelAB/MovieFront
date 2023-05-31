@@ -5,6 +5,8 @@ import { getMovieById, newComment } from "../../../api/movie.api";
 import { movieActionFetch } from "../../../store/actions/movie.action";
 import { useEffect } from "react";
 import { useState } from "react";
+import Rangs from "../../../containers/rangs/rangs";
+import CreateRangs from "../../../containers/rangs/createRangs";
 
 const DetailRow = ({ description, definition }) => (
     <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -28,7 +30,8 @@ const CommentRow = ({ Comments }) => (
 const MovieDetailsPage = () => {
 
     const { register, handleSubmit, reset } = useForm()
-    const [ thatMovie, setThatMovie ]= useState(null)
+    const [ thatMovie, setThatMovie ] = useState(null)
+    const [ selectorRang, setSelectorRang ] = useState(true)
     const dispatch = useDispatch()
 
     const { detailsId } = useParams()
@@ -38,20 +41,23 @@ const MovieDetailsPage = () => {
         const movieData = await getMovieById(id);
         return movieData.data;
     }
-    
+    //FIXME Le rafraîch n'est pas immédiat, il faut cliquer deux fois sur le bouton
     useEffect(() => {
         (async () => {
             const myMovie = await movie(id);
             console.log("myMovie", myMovie);
             setThatMovie(myMovie)
         })();
-    }, [id]);
+    }, [id, selectorRang]);
 
 
     //FIXME Remplacer le User_Id par login dans l'entête de commentaire 
+    //FIXME Penser aux likes : soit rajouter une table MM et faire un count pour un commentaire précis, soit avoir la possibilité de liker un commentaire plusieurs fois
+
+    
     const onSubmit = async( data ) => {
         Object.assign(data, {ID_Movie : id, ID_User : localStorage.getItem('ID_User')})
-        console.log( data );
+        console.log( "comment",data );
         await newComment(data)
         
         //await dispatch(movieActionFetch())
@@ -63,6 +69,7 @@ const MovieDetailsPage = () => {
     }
     if(thatMovie){
         console.log(thatMovie);
+        console.log("Ratings", thatMovie.Ratings);
     }
 
     if (!thatMovie) {
@@ -92,7 +99,20 @@ const MovieDetailsPage = () => {
                         <DetailRow description='Release Date' definition={new Date(thatMovie.release_date).toLocaleDateString()} />
                     </dl>
                 </div>
+                <div className="felx flex-col mt-6">
+                        <div className="flex flex-row justify-center gap-10">
+                            <button className="ButtonsForm"  onClick={ () => setSelectorRang(!selectorRang)} >{ selectorRang ?  " Rate " : " All Rate " }</button>
+                        </div>
+                        <div className="mt-6">
+                            {
+                                selectorRang ? 
+                                <Rangs rangs={thatMovie.Ratings}></Rangs> :
+                                <CreateRangs />
+                            }
+                        </div>
+                        
 
+                </div>
                 <div class="bg-white p-6">
                     <h2 class="text-lg font-bold mb-4">Comments</h2>
                     <div class="flex flex-col space-y-4">{

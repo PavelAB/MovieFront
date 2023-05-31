@@ -26,6 +26,21 @@ export const newComment = ({body, ID_Movie, ID_User}) => {
         .then(console.log("OK"))
         .catch(console.log("NotOK"))
 }
+export const newRate = ({rate_actor_game, rate_cinematography, rate_sound, rate_writing, ID_Movie, ID_User}) => {
+    return axios
+        .post(MOVIE_URL + '/ratings',{
+            rate_picture: 1,
+            rate_actor_game: rate_actor_game,
+            rate_cinematography: rate_cinematography,
+            rate_sound: rate_sound,
+            rate_writing: rate_writing,
+            ID_Movie: ID_Movie,
+            ID_User: ID_User
+
+    })
+        .then(console.log("OK"))
+        .catch(console.log("NotOK"))
+}
 
 export const getMovieById = async (id) => {
     console.log("id", id);

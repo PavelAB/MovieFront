@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { Outlet } from "react-router-dom"
 import SearchBar from "../../components/search-bar/search-bar"
 import { useCallback } from "react"
-import { useNavigate } from "react-router-dom"
 import { testActionCreate } from "../../store/actions/test.action"
 import { useEffect } from "react"
 import { movieActionFetch } from "../../store/actions/movie.action"
 import { useState } from "react"
+
+
+//FIXME La dimension horizontale n'est pas statique et change en fonction du nombre de films affichés sur la page. C'est un mauvais comportement.
 
 const MoviePage = () => {
 
@@ -26,8 +28,6 @@ const MoviePage = () => {
     console.log(isOk);
 
     const handleMovieSearch = useCallback( (test) => {
-        console.log(test);
-        //navigate('/movie/1')
         dispatch(testActionCreate(test))
     })
 
