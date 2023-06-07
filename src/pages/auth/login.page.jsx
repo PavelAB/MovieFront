@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
-import { login } from "../../api/user.api";
+import { login } from "../../api/user.api"
+import { NavLink } from "react-router-dom"
 
 const LoginPage = () => {
     const { register, handleSubmit, reset } = useForm()
@@ -45,10 +46,7 @@ const LoginPage = () => {
                                 <button type="submit" className="ButtonsForm w-full">Sign in</button>
                             </div>
                             <p class="text-center text-sm text-gray-500">Don&#x27;t have an account yet?
-                                <a href="#!"
-                                    class="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none">Sign
-                                    up
-                                </a>.
+                                <NavLink to={"/registration"} className={"font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"} >Sign up</NavLink>
                             </p>
                         </form>
                     </div>

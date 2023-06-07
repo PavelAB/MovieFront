@@ -43,7 +43,7 @@ const CreateRangs = () => {
     console.log(`Sommet gauche : (${leftX}, ${leftY})`);
 
 
-
+    //FIXME Rajouter la gestion de l'erreur de duplication, qui provient du backend
     const onSubmit = async (data) => {
         Object.assign(data, {ID_Movie : id, ID_User : localStorage.getItem('ID_User')})
         console.log(data);
