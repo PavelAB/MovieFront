@@ -104,7 +104,7 @@ const MovieDetailsPage = () => {
         const movieData = await getMovieById(id);
         return movieData.data;
     }
-    //FIXME Le rafraîch n'est pas immédiat, il faut cliquer deux fois sur le bouton
+    //FIXME Le rafraîch de rang n'est pas immédiat, il faut cliquer deux fois sur le bouton
     useEffect(() => {
         (async () => {
             const myMovie = await movie(id);

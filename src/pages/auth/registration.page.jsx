@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form"
 import { regis } from "../../api/user.api"
 import { NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { tokenActionCreate } from "../../store/actions/token.action"
 
 
 const RegistrationPage = () => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, reset } = useForm()
 
     const onSubmit = async ( data ) => {
@@ -17,11 +20,13 @@ const RegistrationPage = () => {
         localStorage.setItem("ID_User", test.data.ID_User)
         localStorage.setItem("role", test.data.role)
 
+        dispatch(tokenActionCreate(localStorage.getItem('role')))
+        
+
         reset()
     }
 
 
-    //TODO centre la formulaire 
     //FIXME Bien ranger le code, ajouter des modules et mettre le CSS dans un fichier à part.
     
     return (

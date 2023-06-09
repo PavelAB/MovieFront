@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 
 
 const NotFoundPage = () => {
-    Link
 
     return (
         <div className="bg-gray-100">
