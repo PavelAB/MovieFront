@@ -14,6 +14,69 @@ const DetailRow = ({ description, definition }) => (
         <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{definition}</dd>
     </div>
 )
+
+
+//FIXME Penser à la possibilité de le faire en une composante réutilisable pour tout type de données.
+const DetailRowActors = ({ description, definition }) => {
+    return ( 
+
+    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900">{description}</dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{
+            definition.map((data) => (
+                <span>{data.first_name} {data.last_name}, </span>
+            ))
+            }
+        <span> ...</span>
+        </dd>
+    </div>
+    )
+}
+const DetailRowGenres = ({ description, definition }) => {
+    return ( 
+
+    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900">{description}</dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{
+            definition.map((data) => (
+                <span>{data.name_genre}</span>
+            ))
+            }
+        <span> ...</span>
+        </dd>
+    </div>
+    )
+}
+const DetailRowCompanies = ({ description, definition }) => {
+    return ( 
+
+    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900">{description}</dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{
+            definition.map((data) => (
+                <span>{data.name_company}</span>
+            ))
+            }
+        <span> ...</span>
+        </dd>
+    </div>
+    )
+}
+const DetailRowAwards = ({ description, definition }) => {
+    return ( 
+
+    <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt className="text-sm font-medium leading-6 text-gray-900">{description}</dt>
+        <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{
+            definition.map((data) => (
+                <span>{data.name_award}</span>
+            ))
+            }
+        <span> ...</span>
+        </dd>
+    </div>
+    )
+}
 const CommentRow = ({ Comments }) => (
     <div class="bg-white p-4 rounded-lg shadow-md">
         <h3 class="text-lg font-bold">{Comments.ID_User ? Comments.ID_User : 'Unknown'}</h3>
@@ -41,7 +104,7 @@ const MovieDetailsPage = () => {
         const movieData = await getMovieById(id);
         return movieData.data;
     }
-    //FIXME Le rafraîch n'est pas immédiat, il faut cliquer deux fois sur le bouton
+    //FIXME Le rafraîch de rang n'est pas immédiat, il faut cliquer deux fois sur le bouton
     useEffect(() => {
         (async () => {
             const myMovie = await movie(id);
@@ -70,6 +133,8 @@ const MovieDetailsPage = () => {
     if(thatMovie){
         console.log(thatMovie);
         console.log("Ratings", thatMovie.Ratings);
+        console.log("Actors: ", thatMovie.Actors);
+
     }
 
     if (!thatMovie) {
@@ -91,11 +156,19 @@ const MovieDetailsPage = () => {
                 <div className="mt-6 border-t border-gray-100 flex flex-row gap-10 items-center">
                     <img src={"http://localhost:8080" + thatMovie.cover} className="h-96 w-72 object-contain" />
                     <dl className="divide-y divide-gray-100 flex-grow">
-                        <DetailRow description='Director' definition={thatMovie.Director} />
-                        <DetailRow description='Actors' definition=' Not implemented.' />
-                        <DetailRow description='Genres' definition=' Not implemented.' />
-                        <DetailRow description='Companies' definition=' Not implemented.' />
-                        <DetailRow description='Awards' definition=' Not implemented.' />
+                        <DetailRow description='Director' definition={thatMovie.Director === null ? 'No information' : thatMovie.Director.first_name} />
+                        {
+                            thatMovie.Actors.length !== 0 ? <DetailRowActors description = 'Actors' definition = {thatMovie.Actors} /> :  <DetailRow description='Actors' definition=' No Information' />
+                        }
+                        {
+                            thatMovie.Genres.length !== 0 ? <DetailRowGenres description = 'Genres' definition = {thatMovie.Genres} /> :  <DetailRow description='Genres' definition=' No Information' />
+                        }
+                        {
+                            thatMovie.Companies.length !== 0 ? <DetailRowCompanies description = 'Companies' definition = {thatMovie.Companies} /> :  <DetailRow description='Companies' definition=' No Information' />
+                        }
+                        {
+                            thatMovie.Awards_Movies.length !== 0 ? <DetailRowAwards description = 'Awards' definition = {thatMovie.Awards_Movies} /> :  <DetailRow description='Awards' definition=' No Information' />
+                        }
                         <DetailRow description='Release Date' definition={new Date(thatMovie.release_date).toLocaleDateString()} />
                     </dl>
                 </div>

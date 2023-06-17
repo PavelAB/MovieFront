@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form"
-import { login } from "../../api/user.api";
+import { login } from "../../api/user.api"
+import { NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { tokenActionCreate } from "../../store/actions/token.action"
 
 const LoginPage = () => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, reset } = useForm()
 
     const onSubmit = async ( data ) => {
@@ -15,18 +19,17 @@ const LoginPage = () => {
         localStorage.setItem("ID_User", test.data.ID_User)
         localStorage.setItem("role", test.data.role)
 
+        dispatch(tokenActionCreate(localStorage.getItem('role')))
+        
+        
         reset()
     }
 
-
-    //TODO centre la formulaire 
     //FIXME Bien ranger le code, ajouter des modules et mettre le CSS dans un fichier à part.
     
     return (
         <>
-            <div
-                class=" mx-auto w-full max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">
-                <div class="w-full">
+            <div class="w-full mx-auto max-w-md bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:rounded-xl sm:px-10">                
                     <div class="text-center">
                         <h1 class="text-3xl font-semibold text-gray-900">Sign in</h1>
                         <p class="mt-2 text-gray-500">Sign in below to access your account</p>
@@ -45,14 +48,11 @@ const LoginPage = () => {
                                 <button type="submit" className="ButtonsForm w-full">Sign in</button>
                             </div>
                             <p class="text-center text-sm text-gray-500">Don&#x27;t have an account yet?
-                                <a href="#!"
-                                    class="font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none">Sign
-                                    up
-                                </a>.
+                                <NavLink to={"/registration"} className={"font-semibold text-gray-600 hover:underline focus:text-gray-800 focus:outline-none"} >Sign up</NavLink>
                             </p>
                         </form>
                     </div>
-                </div>
+                
             </div>
         </>
     )

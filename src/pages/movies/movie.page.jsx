@@ -13,7 +13,7 @@ import { useState } from "react"
 const MoviePage = () => {
 
     const dispatch = useDispatch()
-    const [ isOk, setIsOk ] = useState(false)
+    const [isOk, setIsOk] = useState(false)
 
     useEffect(() => {
         console.log("OnMounted");
@@ -23,26 +23,27 @@ const MoviePage = () => {
         fetchData()
             .then(setIsOk(true))
             .catch(console.error)
-    },[])
+    }, [])
 
     console.log(isOk);
 
-    const handleMovieSearch = useCallback( (test) => {
+    const handleMovieSearch = useCallback((test) => {
         dispatch(testActionCreate(test))
     })
 
 
-    return(
+    return (
         <>
-            <div >
-                <SearchBar label='Votre text' onSearch={handleMovieSearch}></SearchBar>
+            <div className="flex-grow">
+                <div>
+                    <SearchBar label='Votre text' onSearch={handleMovieSearch}></SearchBar>
+                </div>
+
+                <div className="flex">
+                    <Outlet />
+                </div>
             </div>
-            
-            <div className="flex">
-                 <Outlet />
-            </div>
-            
         </>
     )
-} 
+}
 export default MoviePage

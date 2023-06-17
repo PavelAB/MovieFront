@@ -8,16 +8,16 @@
     @apply font-sans py-4 px-6 bg-white shadow w-full ;
   }
   
-  .header .main-container {
-    @apply flex flex-col sm:flex-row items-baseline w-full;
+  .header .main-container{
+    @apply flex flex-row  flex-grow sm:flex-row items-baseline w-full ;
   }
   
   .header .links-container ul {
-    @apply flex flex-col sm:flex-row space-x-0 sm:space-x-4;
+    @apply flex flex-col sm:flex-row space-x-0 sm:space-x-4 ;
   }
   
   .header .form-container {
-    @apply ml-auto;
+    @apply ml-auto ;
   }
 
   .coucou {
@@ -30,6 +30,17 @@
 .test{
     @apply text-2xl no-underline text-gray-900 hover:text-gray-400
 }
+
+.menu{
+
+}
+.open{
+
+ }
+ .closed{
+  @apply hidden
+ }
+
 
 
 .maintest {
@@ -44,3 +55,7 @@
   @apply bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow
 }
 
+.scrollbar-hide {
+  
+  scrollbar-width: none;  /* Firefox */
+}
